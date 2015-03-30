@@ -21,24 +21,6 @@ fdr_mcount = function(mcount_file,outfile)
 
 
 fdr_mcount("all_nonvascular.mr.meth.CHH.hypo.1.pval","all_nonvascular.mr.meth.CHH.hypo.1.pvalcorrected")
-fdr_mcount("all_nonvascular.mr.meth.CHH.hypo.2.pval","all_nonvascular.mr.meth.CHH.hypo.2.pvalcorrected")
-fdr_mcount("all_nonvascular.mr.meth.CHH.hypo.3.pval","all_nonvascular.mr.meth.CHH.hypo.3.pvalcorrected")
-fdr_mcount("all_nonvascular.mr.meth.CHH.hypo.4.pval","all_nonvascular.mr.meth.CHH.hypo.4.pvalcorrected")
-fdr_mcount("all_nonvascular.mr.meth.CHH.hypo.5.pval","all_nonvascular.mr.meth.CHH.hypo.5.pvalcorrected")
-fdr_mcount("all_nonvascular.mr.meth.CHH.hypo.6.pval","all_nonvascular.mr.meth.CHH.hypo.6.pvalcorrected")
-fdr_mcount("all_nonvascular.mr.meth.CHH.hypo.7.pval","all_nonvascular.mr.meth.CHH.hypo.7.pvalcorrected")
-fdr_mcount("all_nonvascular.mr.meth.CHH.hypo.8.pval","all_nonvascular.mr.meth.CHH.hypo.8.pvalcorrected")
-fdr_mcount("all_nonvascular.mr.meth.CHH.hypo.9.pval","all_nonvascular.mr.meth.CHH.hypo.9.pvalcorrected")
-fdr_mcount("all_nonvascular.mr.meth.CHH.hypo.10.pval","all_nonvascular.mr.meth.CHH.hypo.10.pvalcorrected")
-fdr_mcount("all_nonvascular.mr.meth.CHH.hypo.11.pval","all_nonvascular.mr.meth.CHH.hypo.11.pvalcorrected")
-fdr_mcount("all_nonvascular.mr.meth.CHH.hypo.12.pval","all_nonvascular.mr.meth.CHH.hypo.12.pvalcorrected")
-
-
-
-
-
-
-
 
 
 

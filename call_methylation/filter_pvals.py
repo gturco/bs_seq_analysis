@@ -1,5 +1,5 @@
 
-pvalfile = "all.root.mr.meth.CHG.hypo.pval"
+pvalfile = "all_nonvascular.mr.meth.CHH.hypo.1.pvalcorrected"
 
 
 for line in open(pvalfile):
