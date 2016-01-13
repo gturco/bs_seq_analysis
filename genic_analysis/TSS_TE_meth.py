@@ -137,7 +137,7 @@ def main(feature_bed,query_list_pos,query_list_neg,fasta_file,mtype,rand):
         	TSS_region = range(int(feature['locs'][0][0]) - 2000,int(feature['locs'][0][0]))
         	TTS_region = range(int(feature['locs'][-1][1]),int(feature['locs'][-1][1]) + 2000)
         	TSS_sites = get_matchs(query_list_pos,feature['seqid'],TSS_region,fasta["chromosome_" + feature["seqid"]],-2000,rc)
-        	TE_sites = get_matchs(query_list_pos,feature['seqid'],TTS_region,fasta["chromosome_" + feature['seqid']],1100,rc)
+        	TE_sites = get_matchs(query_list_pos,feature['seqid'],TTS_region,fasta["chromosome_" + feature['seqid']],1000,rc)
         	gene_body, rebin = get_genebody(query_list_pos,feature,fasta["chromosome_" + feature["seqid"]],rc,rand)
 		r[feature["accn"]] = rebin	
 		cgene[feature["accn"]] =gene_body	
