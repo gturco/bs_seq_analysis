@@ -1,0 +1,319 @@
+Title
+========================================================
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring web pages (click the **MD** toolbar button for help on Markdown).
+
+When you click the **Knit HTML** button a web page will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+file_name= "/Users/gturco/Documents/Data/Sorg/RNASEQ/RPKM_mean.csv"
+x = read.csv(file_name, header=TRUE)
+x.corr <- cor(x[,2:5])
+```
+
+```{r fig.width=7, fig.height=6}
+library(corrplot)
+corrplot(x.corr, method="number")
+plot(x$vmean,x$nmean)
+```
+
+file_name = "/Users/gturco/Documents/tmp/vascular_CG_genes_genebody_meth2.tsv"
+x = read.table(file_name, header=TRUE)
+plot(x)
+cor(x$mavg, x$rbin)
+cor(x$vmean, x$mavg)
+cor(x$mavg, x$rbindiff)
+file_name = "/Users/gturco/Documents/tmp/non_vas_meth_rpkm_diff2.tsv"
+x = read.table(file_name, header=TRUE)
+
+
+cor(x$n_v_diff,x$n_v_mean)
+cor(x$n_v_diff,abs(x$n_v_mean))
+summary(abs(x$n_v_mean))
+cor(x$n_v_mean,x$rbindiff)
+
+p = x[which(x$rbindiff >0),]
+cor(p$n_v_mean,p$n_v_diff)
+
+cor(p$n_v_mean,p$rbindiff)
+cor(p$n_v_diff,p$rbindiff)
+cor(x$n_v_diff,x$rbindiff)
+
+cor(x$n_v_diff,x$rbindiff)
+
+
+
+```{r fig.width=7, fig.height=6}
+file_name = "/Users/gturco/Documents/tmp/all.CG.filtered_RPKM.txt"
+x = read.table(file_name, col.names=c("pos","freq","mtype"))
+x$mtype <- factor(x$mtype, levels = c("Root","Shoot","vascular","Nonvascular"))
+ggplot(data=x, 
+       aes(x = pos, y = freq * 100 ,group=mtype, color = mtype)) +  geom_line(size = .3) +
+  theme_classic() + theme(text=element_text(size=20))    +  theme( text=element_text(size=7), panel.margin = unit(0, "cm"), plot.margin = unit(c(0, 0, 0.01, -0.1), "cm"),axis.ticks = element_line(size = 0.1), axis.line = element_line(size = 0.1), axis.ticks.length = unit(0.05, "cm"), axis.ticks.margin =unit(0, "cm")) + xlab(NULL) + ylab("% Methylation") + scale_colour_manual(values=c("#c6141c","#fccb0c","#009987","#3261a8")) + ylim(14,84)
+```
+
+
+THIS IS ALL HIGHLY EXPRESSED GENES PLOTED ON TOP OF VASCULAR TISSUE... they are ALL SIMIALR.
+All 4th quartile there methylation profile for vascular... This tells us methylation is not infulncing thies genes.. majority og genes highly expressed are the same
+```{r fig.width=7, fig.height=6}
+
+ file_name = "/Users/gturco/Documents/tmp/vasmeth4.txt"
+x = read.table(file_name, col.names=c("pos","freq","mtype"))
+x$mtype <- factor(x$mtype, levels = c("Root","Shoot","Vascular","Nonvascular"))
+ggplot(data=x, 
+       aes(x = pos, y = freq * 100 ,group=mtype, color = mtype)) +  geom_line(size = .3) +
+  theme_classic() + theme(text=element_text(size=20))    +  theme( text=element_text(size=7), panel.margin = unit(0, "cm"), plot.margin = unit(c(0, 0, 0.01, -0.1), "cm"),axis.ticks = element_line(size = 0.1), axis.line = element_line(size = 0.1), axis.ticks.length = unit(0.05, "cm"), axis.ticks.margin =unit(0, "cm")) + xlab(NULL) + ylab("% Methylation") + scale_colour_manual(values=c("#c6141c","#fccb0c","#009987","#3261a8")) + ylim(14,84)
+```
+
+
+```{r fig.width=7, fig.height=6}
+file_name = "/Users/gturco/Documents/tmp/NORPKMall.txt"
+x = read.table(file_name, col.names=c("pos","freq","mtype"))
+x$mtype <- factor(x$mtype, levels = c("Root","Shoot","vascular","Nonvascular"))
+ggplot(data=x, 
+       aes(x = pos, y = freq * 100 ,group=mtype, color = mtype)) +  geom_line(size = .3) +
+  theme_classic() + theme(text=element_text(size=20))    +  theme( text=element_text(size=7), panel.margin = unit(0, "cm"), plot.margin = unit(c(0, 0, 0.01, -0.1), "cm"),axis.ticks = element_line(size = 0.1), axis.line = element_line(size = 0.1), axis.ticks.length = unit(0.05, "cm"), axis.ticks.margin =unit(0, "cm")) + xlab(NULL) + ylab("% Methylation") + scale_colour_manual(values=c("#c6141c","#fccb0c","#009987","#3261a8")) + ylim(14,84)
+```
+
+```{r fig.width=7, fig.height=6}
+file_name = "/Users/gturco/Documents/tmp/all.CG.filtered_vashigh.txt"
+x = read.table(file_name, col.names=c("pos","freq","mtype"))
+x$mtype <- factor(x$mtype, levels = c("Root","Shoot","vascular","Nonvascular"))
+ggplot(data=x, 
+       aes(x = pos, y = freq * 100 ,group=mtype, color = mtype)) +  geom_line(size = .3) +
+  theme_classic() + theme(text=element_text(size=20))    +  theme( text=element_text(size=7), panel.margin = unit(0, "cm"), plot.margin = unit(c(0, 0, 0.01, -0.1), "cm"),axis.ticks = element_line(size = 0.1), axis.line = element_line(size = 0.1), axis.ticks.length = unit(0.05, "cm"), axis.ticks.margin =unit(0, "cm")) + xlab(NULL) + ylab("% Methylation") + scale_colour_manual(values=c("#c6141c","#fccb0c","#009987","#3261a8")) + ylim(14,84)
+up = x[which(x$pos >= 990 & x$pos <= 1500),]
+### vas and root signifcant and vas and shoot.. but not nonvascular
+genebody = x[which(x$pos >= 0 & x$pos <= 990),]
+d = kruskal.test(freq ~ mtype, data = genebody) 
+c <- posthoc.kruskal.nemenyi.test(freq ~ mtype, data=genebody, dist="Tukey")
+### Conclusions much noiser... can see a differnce 3 prime...
+```
+
+
+
+N4v1 nonvascular hight vascular low mapped with all vascular high genes on vascular meth
+```{r fig.width=7, fig.height=6}
+file_name = "/Users/gturco/Documents/tmp/vasmethn1v4.txt"
+x = read.table(file_name, col.names=c("pos","freq","mtype"))
+x$mtype <- factor(x$mtype, levels = c("Vascular","N4V1", "N1V4"))
+ggplot(data=x, 
+       aes(x = pos, y = freq * 100 ,group=mtype, color = mtype)) +  geom_line(size = .3) +
+  theme_classic() + theme(text=element_text(size=20))    +  theme( text=element_text(size=7), panel.margin = unit(0, "cm"), plot.margin = unit(c(0, 0, 0.01, -0.1), "cm"),axis.ticks = element_line(size = 0.1), axis.line = element_line(size = 0.1), axis.ticks.length = unit(0.05, "cm"), axis.ticks.margin =unit(0, "cm")) + xlab(NULL) + ylab("% Methylation")  + ylim(14,84)
+
+genebody = x[which(x$pos >= -1500 & x$pos <= 150),]
+d = kruskal.test(freq ~ mtype, data = genebody) 
+c <- posthoc.kruskal.nemenyi.test(freq ~ mtype, data=genebody, dist="Tukey")
+
+```
+
+N4v1 nonvascular hight vascular low mapped with  vascular meth and nonvascular meth 
+```{r fig.width=7, fig.height=6}
+file_name = "/Users/gturco/Documents/tmp/vasmethn4v1non.txt"
+x = read.table(file_name, col.names=c("pos","freq","mtype"))
+x$mtype <- factor(x$mtype, levels = c("Nonvascular","N4V1"))
+ggplot(data=x, 
+       aes(x = pos, y = freq * 100 ,group=mtype, color = mtype)) +  geom_line(size = .3) +
+  theme_classic() + theme(text=element_text(size=20))    +  theme( text=element_text(size=7), panel.margin = unit(0, "cm"), plot.margin = unit(c(0, 0, 0.01, -0.1), "cm"),axis.ticks = element_line(size = 0.1), axis.line = element_line(size = 0.1), axis.ticks.length = unit(0.05, "cm"), axis.ticks.margin =unit(0, "cm")) + xlab(NULL) + ylab("% Methylation") 
+
+.485 pvalue....
+```
+
+CONCLUSIONS: Cell type methlation is correlated with other tissue types highly correlated in methylation patterns... main differnces in methylation patterns due to not expressed genes
+
+
+
+
+
+
+```{r fig.width=7, fig.height=6}
+file_name = "/Users/gturco/Documents/Data/Sorg/TSS/new/df/all.non_on_nonvascular.CG.filtered.DF.txt"
+x = read.table(file_name, col.names=c("pos","freq","mtype"))
+
+file_name = "/Users/gturco/Documents/Data/Sorg/TSS/new/df/all.non_on_vascular.CpG.vasdf.txt"
+y = read.table(file_name, col.names=c("pos","freq","mtype"))
+y$mtype = "vas"
+
+ 
+z<- rbind(x,y)
+
+ggplot(data=z, aes(x = pos, y = freq * 100 ,group=mtype, color = mtype)) +  geom_line(size = .3) +
+  theme_classic() + theme(text=element_text(size=20))    +  theme( text=element_text(size=7), panel.margin = unit(0, "cm"), plot.margin = unit(c(0, 0, 0.01, -0.1), "cm"),axis.ticks = element_line(size = 0.1), axis.line = element_line(size = 0.1), axis.ticks.length = unit(0.05, "cm"), axis.ticks.margin =unit(0, "cm")) + xlab(NULL) + ylab("% Methylation") + scale_colour_manual(values=c("#009987","#3261a8")) + ylim(14,84)
+
+file_name = "/Users/gturco/Documents/Data/Sorg/TSS/new/df/all.vas_on_vascular.CpG.vasdf.txt"
+x = read.table(file_name, col.names=c("pos","freq","mtype"))
+x$mtype = "vas"
+
+
+ 
+file_name = "/Users/gturco/Documents/Data/Sorg/TSS/new/df/all.vas_on_nonvascular.CG.filtered.DF.txt"
+y = read.table(file_name, col.names=c("pos","freq","mtype"))
+y$mtype = "non"
+
+z<- rbind(x,y)
+
+ggplot(data=z, aes(x = pos, y = freq * 100 ,group=mtype, color = mtype)) +  geom_line(size = .3) +   theme_classic() + theme(text=element_text(size=20))    +  theme( text=element_text(size=7), panel.margin = unit(0, "cm"), plot.margin = unit(c(0, 0, 0.01, -0.1), "cm"),axis.ticks = element_line(size = 0.1), axis.line = element_line(size = 0.1), axis.ticks.length = unit(0.05, "cm"), axis.ticks.margin =unit(0, "cm")) + xlab(NULL) + ylab("% Methylation") + scale_colour_manual(values=c("#009987","#3261a8")) + ylim(14,84)
+
+
+===========
+  
+library(ggbiplot)
+
+CG = "/Users/gturco/Downloads/dca9cc39-a9c5-4585-9ad9-b67db560033b-000000-CG"
+x = read.table(CG, col.names=c("seqid","start","v1","v2","v3","n1","n2","n3","s1","s2","s3","r1","r2","r3"), sep="\t", header= FALSE)
+  
+y <- t(head(x[,3:14], n=34176))
+vars <- c("vas","vas","vas","non","non","non","shoot","shoot","shoot","root","root","root")
+z <- cbind.data.frame(y,vars)
+cg.pca <- prcomp(z[,1:34176], scale. = FALSE)
+ggbiplot(cg.pca, groups = vars , ellipse = TRUE, circle = TRUE, var.axes=FALSE) + theme_classic()   
+
+
+
+
+
+library(ggfortify)
+
+cg.pca <- prcomp(z[,1:34176], scale. = FALSE)
+
+autoplot(cg.pca, data = z, colour="vars", size=.3 ) + theme_classic()  +  theme(text=element_text(size=20))    +  theme(legend.position ="none", text=element_text(size=7), panel.margin = unit(0, "cm"), axis.ticks = element_line(size = 0.1), axis.line = element_line(size = 0.1), axis.ticks.length = unit(0.05, "cm"), axis.ticks.margin =unit(0, "cm")) + xlab(NULL) + ylab(NULL) + scale_colour_manual(values=c("#c6141c","#fccb0c","#009987","#3261a8"))
+
+cg.pcad = data.frame(cg.pca$x, vars)
+library(ellipse)
+
+df_ell = data.frame()
+cg.pcad$vars <- factor(cg.pcad$vars, levels = c("root","shoot","vas","non"))
+
+for(g in levels(cg.pcad$vars)){
+df_ell <- rbind(df_ell, cbind(as.data.frame(with(cg.pcad[cg.pcad$vars==g,], ellipse(cor(PC1, PC2), 
+                                         scale=c(sd(PC1),sd(PC2)), 
+                                         centre=c(mean(PC1),mean(PC2))))),group=g))
+
+}
+library(ggplot2)
+
+
+ggplot(data = cg.pcad, aes(x=PC1, y=PC2, colour=vars )) + geom_point(size=0.3) + geom_path(data=df_ell, aes(x=x, y=y,colour=group), size=0.2, linetype=1) + theme_classic()  +  theme(text=element_text(size=20))    +  theme(legend.position ="none", text=element_text(size=7), panel.margin = unit(0, "cm"), axis.ticks = element_line(size = 0.1), axis.line = element_line(size = 0.1), axis.ticks.length = unit(0.05, "cm"), axis.ticks.margin =unit(0, "cm")) + xlab(NULL) + ylab(NULL) + scale_colour_manual(values=c("#c6141c","#fccb0c","#009987","#3261a8"))
+
+
+ggsave("/Users/gturco/Documents/Data/Sorg/PCA_CG.pdf", width=5.60, height=3.2, dpi=600, units="cm")  
+
+
+CHH = "/Users/gturco/Downloads/b1b568f6-4f9f-4eb4-8b87-599677885915-000000"
+x = read.table(CHH, col.names=c("seqid","start","v1","v2","v3","n1","n2","n3","s1","s2","s3","r1","r2","r3"), sep="\t", header= FALSE)
+
+
+y <- t(head(x[,3:14], n=5359))
+vars <- c("vas","vas","vas","non","non","non","shoot","shoot","shoot","root","root","root")
+z <- cbind.data.frame(y,vars)
+chh.pca <- prcomp(z[,1:5359], scale. = FALSE)
+
+
+autoplot(chh.pca, data = z, colour="vars", size=.3 ) + theme_classic()  +  theme(text=element_text(size=20))    +  theme(legend.position ="none", text=element_text(size=7), panel.margin = unit(0, "cm"), axis.ticks = element_line(size = 0.1), axis.line = element_line(size = 0.1), axis.ticks.length = unit(0.05, "cm"), axis.ticks.margin =unit(0, "cm")) + xlab(NULL) + ylab(NULL) + scale_colour_manual(values=c("#c6141c","#fccb0c","#009987","#3261a8"))
+
+chh.pcad = data.frame(chh.pca$x, vars)
+chh.pcad$vars <- factor(chh.pcad$vars, levels = c("root","shoot","vas","non"))
+
+df_ell = data.frame()
+for(g in levels(chh.pcad$vars)){
+df_ell <- rbind(df_ell, cbind(as.data.frame(with(chh.pcad[chh.pcad$vars==g,], ellipse(cor(PC1, PC2), 
+                                         scale=c(sd(PC1),sd(PC2)), 
+                                         centre=c(mean(PC1),mean(PC2))))),group=g))
+
+}
+
+
+ggplot(data = chh.pcad, aes(x=PC1, y=PC2, colour=vars )) + geom_point(size=0.3) + geom_path(data=df_ell, aes(x=x, y=y,colour=group), size=0.2, linetype=1) + theme_classic()  +  theme(text=element_text(size=20))    +  theme(legend.position ="none", text=element_text(size=7), panel.margin = unit(0, "cm"), axis.ticks = element_line(size = 0.1), axis.line = element_line(size = 0.1), axis.ticks.length = unit(0.05, "cm"), axis.ticks.margin =unit(0, "cm")) + xlab(NULL) + ylab(NULL) + scale_colour_manual(values=c("#c6141c","#fccb0c","#009987","#3261a8"))
+
+
+ggsave("/Users/gturco/Documents/Data/Sorg/PCA_CHH.pdf", width=5.60, height=3.2, dpi=600, units="cm") 
+
+
+
+ggsave("/Users/gturco/Documents/Data/Sorg/PCA_CHH.pdf", width=5.60, height=3.2, dpi=600, units="cm")  
+
+CHG = "/Users/gturco/Downloads/3ec25dc9-0bfe-4c31-82ee-e916aadd5f78-000000-root2"
+x = read.table(CHG, col.names=c("seqid","start","v1","v2","v3","n1","n2","n3","s1","s2","s3","r1","r2","r3"), sep="\t", header= FALSE)
+y <- t(head(x[,3:14], n=5359))
+vars <- c("vas","vas","vas","non","non","non","shoot","shoot","shoot","root","root","root")
+z <- cbind.data.frame(y,vars)
+chg.pca <- prcomp(z[,1:5359], scale. = FALSE)
+
+
+
+chg.pcad = data.frame(chg.pca$x, vars)
+chg.pcad$vars <- factor(chg.pcad$vars, levels = c("root","shoot","vas","non"))
+
+df_ell = data.frame()
+for(g in levels(chg.pcad$vars)){
+df_ell <- rbind(df_ell, cbind(as.data.frame(with(chg.pcad[chg.pcad$vars==g,], ellipse(cor(PC1, PC2), 
+                                         scale=c(sd(PC1),sd(PC2)), 
+                                         centre=c(mean(PC1),mean(PC2))))),group=g))
+
+}
+
+
+ggplot(data = chg.pcad, aes(x=PC1, y=PC2, colour=vars )) + geom_point(size=0.3) + geom_path(data=df_ell, aes(x=x, y=y,colour=group), size=0.2, linetype=1) + theme_classic()  +  theme(text=element_text(size=20))    +  theme(legend.position ="none", text=element_text(size=7), panel.margin = unit(0, "cm"), axis.ticks = element_line(size = 0.1), axis.line = element_line(size = 0.1), axis.ticks.length = unit(0.05, "cm"), axis.ticks.margin =unit(0, "cm")) + xlab(NULL) + ylab(NULL) + scale_colour_manual(values=c("#c6141c","#fccb0c","#009987","#3261a8"))
+
+
+ggsave("/Users/gturco/Documents/Data/Sorg/PCA_CHG.pdf", width=5.80, height=3.2, dpi=600, units="cm") 
+
+
+ggsave("/Users/gturco/Documents/Data/Sorg/PCA_CHG.pdf", width=5.60, height=3.2, dpi=600, units="cm")  
+===============
+  
+  ggplot(z, aes(variable, ttype, fill = pval)) + geom_tile(colour = "black") + scale_fill_brewer(palette = "Blues",direction=-1, limits=c("(0,0.0001]","(0.0001,0.01]","(0.001,0.01]")) + theme_classic() +   theme(legend.position ="none",axis.text.x=element_blank(),axis.text.y=element_blank(), text=element_text(size=7), panel.margin = unit(0, "cm"), plot.margin = unit(c(0, 0, 0.01, -0.1), "cm"),axis.ticks = element_line(size = 0.1), axis.line = element_line(size = 0.1), axis.ticks.length = unit(0.05, "cm"), axis.ticks.margin =unit(0, "cm")) + xlab(NULL) + ylab(NULL)
+  
+  ### submeth graphs
+file_name = "/Users/gturco/Documents/Data/Sorg/TSS/new/tissue/all/CG_tissue.txt" 
+upstream_pval(file_name)
+
+ggsave("/Users/gturco/Documents/Data/Sorg/TSS/new/tissue/all/CG_up.pdf", width=1.8, height=1.5, dpi=600, units="cm") 
+
+genebody_pval(file_name)
+
+ggsave("/Users/gturco/Documents/Data/Sorg/TSS/new/tissue/all/CG_body.pdf", width=1.8, height=1.5, dpi=600, units="cm") 
+
+downstream_pval(file_name)
+
+ggsave("/Users/gturco/Documents/Data/Sorg/TSS/new/tissue/all/CG_down.pdf", width=1.8, height=1.5, dpi=600, units="cm") 
+
+  
+
+
+file_name = "/Users/gturco/Documents/Data/Sorg/TSS/new/tissue/all/CHG_tissue.txt" 
+upstream_pval(file_name)
+
+ggsave("/Users/gturco/Documents/Data/Sorg/TSS/new/tissue/all/CHG_up.pdf", width=1.8, height=1.5, dpi=600, units="cm") 
+
+genebody_pval(file_name)
+
+ggsave("/Users/gturco/Documents/Data/Sorg/TSS/new/tissue/all/CHG_body.pdf", width=1.8, height=1.5, dpi=600, units="cm") 
+
+downstream_pval(file_name)
+
+ggsave("/Users/gturco/Documents/Data/Sorg/TSS/new/tissue/all/CHG_down.pdf", width=1.8, height=1.5, dpi=600, units="cm") 
+
+  
+  
+  
+  
+file_name = "/Users/gturco/Documents/Data/Sorg/TSS/new/tissue/all/CHH_tissue.txt" 
+
+upstream_pval(file_name)
+
+ggsave("/Users/gturco/Documents/Data/Sorg/TSS/new/tissue/all/CHH_up.pdf", width=1.8, height=1.5, dpi=600, units="cm") 
+
+genebody_pval(file_name)
+
+ggsave("/Users/gturco/Documents/Data/Sorg/TSS/new/tissue/all/CHH_body.pdf", width=1.8, height=1.5, dpi=600, units="cm") 
+
+downstream_pval(file_name)
+
+ggsave("/Users/gturco/Documents/Data/Sorg/TSS/new/tissue/all/CHH_down.pdf", width=1.8, height=1.5, dpi=600, units="cm") 
+
+````
+
+
+
+
